@@ -1,3 +1,5 @@
 .vagrant
 *console.log
 keys
+.terraform
+*.terraform.lock*
