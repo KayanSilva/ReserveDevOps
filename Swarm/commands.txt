@@ -1,0 +1,9 @@
+# Para adicionar um work ao cluster(Swarm) executar dentro da manager
+docker swarm join-token worker
+
+# Id e hostname de cada nó do Swarm
+docker node ls
+
+#Remover um nó do swarm
+Na maquina a ser removida: docker swarm leave
+Na manager: docker node rm {ID} 
