@@ -7,3 +7,19 @@ docker node ls
 #Remover um nó do swarm
 Na maquina a ser removida: docker swarm leave
 Na manager: docker node rm {ID} 
+
+#Força a adição de configuração obtida por backup
+backup <-- /var/lib/docker/swarm
+docker swarm init --force-new-cluster --advertise-addr
+
+#Rebaixar o nivel da vm manager para worker
+docker node demote {{vm}}
+
+#Atualizar status de um nó  
+docker node update --availability active {{vm}}
+
+#Adicionando restrições no serviço
+docker service update --constraint-add node.role==worker
+
+#Replicando serviço em diferentes nós
+docker service scale {{serviceId}}=5
